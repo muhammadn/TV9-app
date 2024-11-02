@@ -4,7 +4,7 @@
       [
         "@react-native-tvos/config-tv",
         {
-          "androidTVBanner": "./assets/tv_icons/icon-400x240.png",
+          "androidTVBanner": "./assets/tv_icons/tvalhijrah.png",
           "appleTVImages": {
             "icon": "./assets/tv_icons/icon-1280x768.png",
             "iconSmall": "./assets/tv_icons/icon-400x240.png",
@@ -13,6 +13,18 @@
             "topShelf2x": "./assets/tv_icons/icon-3840x1440.png",
             "topShelfWide": "./assets/tv_icons/icon-2320x720.png",
             "topShelfWide2x": "./assets/tv_icons/icon-4640x1440.png"
+          }
+        }
+      ],
+      [
+        "react-native-video",
+        {
+          "enableNotificationControls": true,
+          "androidExtensions": {
+            "useExoplayerRtsp": false,
+            "useExoplayerSmoothStreaming": false,
+            "useExoplayerHls": true,
+            "useExoplayerDash": true
           }
         }
       ],
@@ -32,7 +44,21 @@
     "experiments": {
       "typedRoutes": true
     },
-    "name": "TaqiTV",
-    "slug": "TaqiTV"
-  }
+    "name": "TV Al-Hijrah",
+    "slug": "tv-al-hijrah",
+    "android": {
+      "package": "com.taqisystems.alhijrah.tv",
+      "permissions": [
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ],
+      "icon": "./assets/tv_icons/tvalhijrah.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d932b89d-e4c9-4905-9136-ee261a9c32d3"
+      }
+    }
+  },
+  "icon": "./assets/tv_icons/tvalhijrah.png"
 }
