@@ -3,6 +3,7 @@ import { View, AppState, BackHandler, StyleSheet } from 'react-native';
 import { useScale } from '@/hooks/useScale';
 import { ThemedView } from '@/components/ThemedView';
 import Video, { VideoRef } from 'react-native-video';
+import Loader from '@/components/Loader';
 import { useEffect, useState, useRef } from 'react';
 
 export default function AlHijrah() {
@@ -10,7 +11,7 @@ export default function AlHijrah() {
   const styles = useFocusDemoScreenStyles();
   const videoRef = useRef<VideoRef>(null);
   const [data, setData] = useState([]);
-  const [position, setPosition] = useState([]);
+  const [position, setPosition] = useState(99999999999);
 
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
@@ -25,35 +26,48 @@ export default function AlHijrah() {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      handleDelay(); // delay, update video time and close loading
+      //setLoading(false);
     }
-  }
+  };
 
   const updatePosition = () => {
     console.log("Updating frame position")
     setPosition(99999999999);
-  }
+  };
+
+  const delay = async (ms) => {
+      return new Promise((resolve) => 
+          setTimeout(resolve, ms));
+  };
+
+  const handleDelay = async () => {
+      updatePosition();
+      await delay(7000);
+      setLoading(false);
+  };
 
   useEffect(() => {
-    setLoading(true)
     getLink()
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (
         appState.current.match(/inactive|background/) &&
         nextAppState === 'active'
       ) {
+        setLoading(true)
+        getLink()
         console.log('App has come to the foreground!');
       }
       appState.current = nextAppState;
       setAppStateVisible(appState.current);
       console.log('AppState', appState.current);
-      updatePosition();
     });
   }, []);
 
   return (
     <ThemedView>
-       {!isLoading && 
+       {isLoading ? 
+         <Loader /> :
          <Video
            // Can be a URL or a local file.
            source={{uri: data.video}}
@@ -61,8 +75,6 @@ export default function AlHijrah() {
            ref={videoRef}
            style={styles.backgroundVideo}
            controls={true}
-           onPlaybackStateChanged={() => setPosition(99999999999)}
-           onPlaybackRateChange={() => setPosition(99999999999)}
            startPosition={position}
          />
        }

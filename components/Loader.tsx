@@ -5,7 +5,7 @@ import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 const Loader = () => (
 
   <SafeAreaProvider>
-    <SafeAreaView style={[styles.container, styles.horizontal]}>
+    <SafeAreaView style={styles.container}>
       <ActivityIndicator size="large" />
     </SafeAreaView>
   </SafeAreaProvider>
@@ -13,13 +13,10 @@ const Loader = () => (
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'black',
+    marginTop: 270,
     flex: 1,
     justifyContent: 'center',
-  },
-  horizontal: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
   },
 });
 
