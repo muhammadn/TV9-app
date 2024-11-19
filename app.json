@@ -4,7 +4,7 @@
       [
         "@react-native-tvos/config-tv",
         {
-          "androidTVBanner": "./assets/tv_icons/tvalhijrah.png",
+          "androidTVBanner": "./assets/tv_icons/tv9.png",
           "appleTVImages": {
             "icon": "./assets/tv_icons/icon-1280x768.png",
             "iconSmall": "./assets/tv_icons/icon-400x240.png",
@@ -44,21 +44,20 @@
     "experiments": {
       "typedRoutes": true
     },
-    "name": "TV Al-Hijrah",
-    "slug": "tv-al-hijrah",
+    "name": "TV9",
+    "slug": "tv-9",
     "android": {
-      "package": "com.taqisystems.alhijrah.tv",
+      "package": "com.taqisystems.tv9.tv",
       "permissions": [
         "android.permission.FOREGROUND_SERVICE",
         "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
-      ],
-      "icon": "./assets/tv_icons/tvalhijrah.png"
+      ]
     },
     "extra": {
       "eas": {
-        "projectId": "d932b89d-e4c9-4905-9136-ee261a9c32d3"
+        "projectId": "c611c197-5e7d-4a52-840b-93cac5a4e6bd"
       }
     }
   },
-  "icon": "./assets/tv_icons/tvalhijrah.png"
+  "icon": "./assets/tv_icons/tv9.png"
 }

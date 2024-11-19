@@ -6,7 +6,7 @@ import Video, { VideoRef } from 'react-native-video';
 import Loader from '@/components/Loader';
 import { useEffect, useState, useRef } from 'react';
 
-export default function AlHijrah() {
+export default function TV9() {
   const scale = useScale();
   const styles = useFocusDemoScreenStyles();
   const videoRef = useRef<VideoRef>(null);
@@ -19,7 +19,7 @@ export default function AlHijrah() {
 
   const getLink = async() => {
     try {
-      const response = await fetch("https://streaming.unrealasia.net/tvalhijrah?bust=true",
+      const response = await fetch("https://streaming.unrealasia.net/tv9?bust=true",
                            {cache: 'no-store'})
       const json = await response.json();
       setData(json);
@@ -91,6 +91,7 @@ const useFocusDemoScreenStyles = function () {
       left: 0,
       bottom: -540,
       right: 0,
+      backgroundColor: 'black',
     },
   });
 };
